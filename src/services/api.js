@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const api = axios.create();
 
-const BASE = 'https://scoutflow-backend-zxq0.onrender.com/api';
+const BASE = 'https://scoutflow-backend-zxq0.onrender.com/api/';
 
 export const recruitmentApi = {
   parseJd: (jdText) => api.post(`${BASE}/parse-jd`, { jd_text: jdText }),
