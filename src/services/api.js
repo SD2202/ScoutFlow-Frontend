@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://scoutflow-backend-zxq0.onrender.com';
+const API_BASE_URL = 'https://scoutflow-backend-zxq0.onrender.com/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -10,9 +10,9 @@ export const recruitmentApi = {
   parseJd: (jdText) => api.post('/parse-jd', { jd_text: jdText }),
   getCandidates: () => api.get('/candidates'),
   matchCandidates: (jdText) => api.post('/match', { jd_text: jdText }),
-  simulateConversation: (profile, message) => api.post('/simulate-conversation', { 
-    candidate_profile: profile, 
-    recruiter_message: message 
+  simulateConversation: (profile, message) => api.post('/simulate-conversation', {
+    candidate_profile: profile,
+    recruiter_message: message
   }),
   scoreInterest: (history) => api.post('/score-interest', history),
   login: (credentials) => api.post('/login', credentials),
