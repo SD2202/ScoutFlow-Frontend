@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://scoutflow-backend-zxq0.onrender.com/api/'; 
+const API_BASE_URL = 'https://scoutflow-backend-zxq0.onrender.com'; 
 
 const api = axios.create({
   baseURL: API_BASE_URL,
