@@ -6,7 +6,7 @@ const BASE = 'https://scoutflow-backend-zxq0.onrender.com/api/';
 
 export const recruitmentApi = {
   parseJd: (jdText) => api.post(`${BASE}/parse-jd`, { jd_text: jdText }),
-  getCandidates: () => api.get(`${BASE}/candidates`),
+  getCandidates: () => api.get(`${BASE}candidates`),
   matchCandidates: (jdText) => api.post(`${BASE}/match`, { jd_text: jdText }),
   simulateConversation: (profile, message) => api.post(`${BASE}/simulate-conversation`, { 
     candidate_profile: profile, 
