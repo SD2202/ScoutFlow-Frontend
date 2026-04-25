@@ -1,28 +1,66 @@
 import axios from 'axios';
 
-const api = axios.create();
+// 🔥 AUTO SWITCH (LOCAL vs DEPLOYED)
+const BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  'https://scoutflow-backend-zxq0.onrender.com/api';
 
-const BASE = 'https://scoutflow-backend-zxq0.onrender.com/api/';
+// 🔥 CREATE AXIOS INSTANCE (IMPORTANT)
+const api = axios.create({
+  baseURL: BASE_URL.replace(/\/+$/, ''), // remove trailing slash
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
+// 🔥 CENTRALIZED API METHODS
 export const recruitmentApi = {
-  parseJd: (jdText) => api.post(`${BASE}/parse-jd`, { jd_text: jdText }),
-  getCandidates: () => api.get(`${BASE}candidates`),
-  matchCandidates: (jdText) => api.post(`${BASE}/match`, { jd_text: jdText }),
-  simulateConversation: (profile, message) => api.post(`${BASE}/simulate-conversation`, { 
-    candidate_profile: profile, 
-    recruiter_message: message 
-  }),
-  scoreInterest: (history) => api.post(`${BASE}/score-interest`, history),
-  login: (credentials) => api.post(`${BASE}/login`, credentials),
-  signup: (userData) => api.post(`${BASE}/signup`, userData),
-  saveJob: (jobData) => api.post(`${BASE}/jobs`, jobData),
-  renameJob: (jobId, title) => api.patch(`${BASE}/jobs/${jobId}/rename`, { title }),
-  toggleJobStatus: (id) => api.patch(`${BASE}/jobs/${id}/toggle-status`),
-  deleteJob: (id) => api.delete(`${BASE}/jobs/${id}`),
-  shortlistCandidate: (data) => api.post(`${BASE}/shortlist`, data),
-  getDashboard: () => api.get(`${BASE}/dashboard`),
-  getCandidateHistory: (id) => api.get(`${BASE}/candidates/${id}/history`),
-  getCandidateSummary: (id) => api.get(`${BASE}/candidates/${id}/summary`),
+  // JD Parsing
+  parseJd: (jdText) => api.post('/parse-jd', { jd_text: jdText }),
+
+  // Candidates
+  getCandidates: () => api.get('/candidates'),
+
+  // Matching
+  matchCandidates: (jdText) =>
+    api.post('/match', { jd_text: jdText }),
+
+  // Conversation
+  simulateConversation: (profile, message) =>
+    api.post('/simulate-conversation', {
+      candidate_profile: profile,
+      recruiter_message: message,
+    }),
+
+  // Interest scoring
+  scoreInterest: (history) =>
+    api.post('/score-interest', history),
+
+  // Auth
+  login: (credentials) => api.post('/login', credentials),
+  signup: (userData) => api.post('/signup', userData),
+
+  // Jobs
+  saveJob: (jobData) => api.post('/jobs', jobData),
+  renameJob: (jobId, title) =>
+    api.patch(`/jobs/${jobId}/rename`, { title }),
+  toggleJobStatus: (id) =>
+    api.patch(`/jobs/${id}/toggle-status`),
+  deleteJob: (id) => api.delete(`/jobs/${id}`),
+
+  // Shortlisting
+  shortlistCandidate: (data) =>
+    api.post('/shortlist', data),
+
+  // Dashboard
+  getDashboard: () => api.get('/dashboard'),
+
+  // Candidate details
+  getCandidateHistory: (id) =>
+    api.get(`/candidates/${id}/history`),
+
+  getCandidateSummary: (id) =>
+    api.get(`/candidates/${id}/summary`),
 };
 
 export default api;
