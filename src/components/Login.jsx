@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { recruitmentApi } from '../services/api';
 import { Zap, Lock, User, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import logo from "../assets/logo.png";
 
 const Login = ({ onLogin, onSwitchToSignup }) => {
   const [username, setUsername] = useState('');
@@ -37,7 +38,7 @@ const Login = ({ onLogin, onSwitchToSignup }) => {
         <div className="bg-card/40 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-2xl p-8">
           <div className="flex flex-col items-center mb-8">
             <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center shadow-lg shadow-primary/20 mb-4">
-              <Zap className="text-white w-8 h-8 fill-white" />
+              <img src={logo} alt="Logo" className="w-10 h-10 object-contain" />
             </div>
             <h1 className="text-2xl font-black tracking-tight text-white">ScoutFlow <span className="text-primary">AI</span></h1>
             <p className="text-slate-400 text-sm mt-2">Sign in to access your workspace</p>
