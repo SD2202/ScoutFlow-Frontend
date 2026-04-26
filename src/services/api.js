@@ -5,9 +5,9 @@ const BASE_URL =
   import.meta.env.VITE_API_URL ||
   'https://scoutflow-backend-zxq0.onrender.com/api';
 
-// 🔥 CREATE AXIOS INSTANCE (IMPORTANT)
+// 🔥 AXIOS INSTANCE
 const api = axios.create({
-  baseURL: BASE_URL.replace(/\/+$/, ''), // remove trailing slash
+  baseURL: BASE_URL.replace(/\/+$/, ''),
   headers: {
     'Content-Type': 'application/json',
   },
@@ -25,12 +25,17 @@ export const recruitmentApi = {
   matchCandidates: (jdText) =>
     api.post('/match', { jd_text: jdText }),
 
-  // Conversation
-  simulateConversation: (profile, message) =>
+  // 🔥 UPDATED CONVERSATION (WITH candidate_id)
+  simulateConversation: (candidateId, profile, message) =>
     api.post('/simulate-conversation', {
+      candidate_id: candidateId,
       candidate_profile: profile,
       recruiter_message: message,
     }),
+
+  // 🔥 OPTIONAL: SAVE CHAT EXPLICITLY (if separate endpoint)
+  saveConversation: (data) =>
+    api.post('/conversations', data),
 
   // Interest scoring
   scoreInterest: (history) =>
