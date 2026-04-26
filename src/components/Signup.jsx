@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Zap, Lock, User, ArrowRight, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { recruitmentApi } from '../services/api';
-
+import logo from "../public/logo.png";
 const Signup = ({ onSignup, onSwitchToLogin }) => {
   const [formData, setFormData] = useState({
     name: '',
@@ -40,7 +40,7 @@ const Signup = ({ onSignup, onSwitchToLogin }) => {
         <div className="bg-card/40 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-2xl p-8">
           <div className="flex flex-col items-center mb-8">
             <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center shadow-lg shadow-accent/20 mb-4">
-              <Zap className="text-white w-8 h-8 fill-white" />
+              <img src={logo} alt="Logo" className="w-10 h-10 object-contain" />
             </div>
             <h1 className="text-2xl font-black tracking-tight text-white">Join <span className="text-accent">ScoutFlow AI</span></h1>
             <p className="text-slate-400 text-sm mt-2">Create your recruiter account</p>
