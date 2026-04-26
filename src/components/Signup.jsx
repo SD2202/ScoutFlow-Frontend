@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Zap, Lock, User, ArrowRight, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { recruitmentApi } from '../services/api';
-import logo from ".../public/logo.png";
+import logo from "../assets/logo.png";
 const Signup = ({ onSignup, onSwitchToLogin }) => {
   const [formData, setFormData] = useState({
     name: '',
