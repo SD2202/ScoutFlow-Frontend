@@ -36,7 +36,7 @@ const ChatPanel = ({ candidate, candidates, onSelectCandidate }) => {
 
     try {
       const profile = candidate.profile || candidate;
-      const res = await recruitmentApi.simulateConversation(profile, input);
+      const res = await recruitmentApi.simulateConversation(currentCandidateId, profile, input);
       
       setTimeout(() => {
         const botMessage = { 
