@@ -106,7 +106,7 @@ const Login = ({ onLogin, onSwitchToSignup }) => {
 
           <div className="mt-4 pt-4 border-t border-white/5 text-center">
             <p className="text-[10px] text-slate-500 uppercase tracking-tighter">
-              Secured by Enterprise Shield AI
+              Built by Sparsh Dwivedi
             </p>
           </div>
         </div>
